@@ -9,19 +9,15 @@ const taskRoutes = require('./routes/tasks');
 
 const app = express();
 
-
 app.use(cors("*"));
 app.use(express.json());
-
 
 app.use(`${config.api.prefix}/auth`, authRoutes);
 app.use(`${config.api.prefix}/tasks`, taskRoutes);
 
-
 app.get('/', (req, res) => {
     res.json({ message: 'Server is up and running!' });
 });
-
 
 app.use((err, req, res, next) => {
     console.error(err.stack);
